@@ -11,7 +11,7 @@ public class RateBLL {
 
 	private static RateDAL _RateDAL = new RateDAL();
 	
-	static double getRate(int GivenCreditScore) throws RateException {
+	public static double getRate(int GivenCreditScore) throws RateException {
 		
 		ArrayList<RateDomainModel> rates = RateDAL.getAllRates();
 		int rateInt = rates.size();
@@ -26,10 +26,5 @@ public class RateBLL {
 	public static double getPayment(double r, double n, double p, double f, boolean t) {
 		
 		return FinanceLib.pmt(r, n, p, f, t);
-		/*
-		 * return FinanceLib.pmt(getRate(MortgageController.getCreditScore()), 
-				(12 * MortgageController.getTerm()), MortgageController.getHouseCost(),
-				0, true);
-		 */
 	}
 }
